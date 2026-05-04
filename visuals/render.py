@@ -10,10 +10,12 @@ class Renderer():
         canvas_coordinats = geometry.get_canvas_height_width(self.canvas)
         bbox = (0, 0, canvas_coordinats[0], canvas_coordinats[1])
         coordinats = geometry.get_four_quadrant_centers(bbox)
-        print(coordinats)
         count = 0
+        
+        player_ids = []
         for position in coordinats:
             if count > player_count:
                 break
-            self.canvas.create_rectangle(position[0]-self.pwidth/2, position[1]-self.pheight/2, position[0]+self.pwidth/2, position[1]+self.pheight/2, fill=self.color_list[count])
+            player_ids.append(self.canvas.create_rectangle(position[0]-self.pwidth/2, position[1]-self.pheight/2, position[0]+self.pwidth/2, position[1]+self.pheight/2, fill=self.color_list[count]))
             count += 1
+        return player_ids

@@ -12,7 +12,9 @@ class MainWindow:
         self.canvas.pack(padx=10, pady=10, fill="both", expand=True) 
         renderer = render.Renderer(self.canvas)
         self.root.update()
-        renderer.create_players(4)
+        self.player_ids = []
+        self.player_ids.extend(renderer.create_players(4))
+        print(self.player_ids)
     def run(self):
        self.root.mainloop()
 
